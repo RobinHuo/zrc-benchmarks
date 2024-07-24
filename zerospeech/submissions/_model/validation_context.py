@@ -76,6 +76,9 @@ class ValidationContext:
         """ Initially context is empty """
         self._outputs: List[ValidationResponse] = []
 
+    def __iter__(self):
+        return iter(self._outputs)
+
     def __len__(self):
         """ Return the number of Responses in context """
         return len(self._outputs)
