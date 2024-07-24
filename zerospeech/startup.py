@@ -25,8 +25,8 @@ def init():
     if not st.samples_path.is_dir():
         st.samples_path.mkdir(exist_ok=True, parents=True)
 
-    if check_update_repo_index():
-        update_repo_index()
+    # if check_update_repo_index():
+    #     update_repo_index()
 
 
 def main():
