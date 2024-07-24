@@ -42,7 +42,7 @@ class AbxLSSubmissionValidator(SubmissionValidation):
             # Verify that type of array is float
             functools.partial(
                 validators.numpy_dtype_check,
-                dtype=np.dtype('float')
+                dtype=np.dtype('float32')
             ),
             # Verify that array has 2 dimensions
             functools.partial(
@@ -73,7 +73,7 @@ class AbxLSSubmissionValidator(SubmissionValidation):
             # Verify that type of array is float
             functools.partial(
                 validators.numpy_dtype_check,
-                dtype=np.dtype('float')
+                dtype=np.dtype('float32')
             ),
             # Verify that array has 2 dimensions
             functools.partial(
@@ -104,7 +104,7 @@ class AbxLSSubmissionValidator(SubmissionValidation):
             # Verify that type of array is float
             functools.partial(
                 validators.numpy_dtype_check,
-                dtype=np.dtype('float')
+                dtype=np.dtype('float32')
             ),
             # Verify that array has 2 dimensions
             functools.partial(
@@ -135,7 +135,7 @@ class AbxLSSubmissionValidator(SubmissionValidation):
             # Verify that type of array is float
             functools.partial(
                 validators.numpy_dtype_check,
-                dtype=np.dtype('float')
+                dtype=np.dtype('float32')
             ),
             # Verify that array has 2 dimensions
             functools.partial(
