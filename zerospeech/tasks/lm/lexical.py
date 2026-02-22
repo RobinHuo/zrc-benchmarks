@@ -83,11 +83,17 @@ class LexicalTask(Task):
         data.drop(columns=['score word', 'score non word'], inplace=True)
 
         # finally get the mean score across voices for all pairs
-        score = data.groupby('id').apply(lambda x: (
-            x.iat[0, 3],  # word
-            x.iat[0, 5],  # non word
-            x.iat[0, 2],  # frequency
-            x.iat[0, 4],  # length
+        score = data.groupby('id')[
+            ['word', 'non word', 'frequency', 'length', 'score']
+        ].apply(lambda x: (
+            # x.iat[0, 3],  # word
+            x['word'].iat[0],
+            # x.iat[0, 5],  # non word
+            x['non word'].iat[0],
+            # x.iat[0, 2],  # frequency
+            x['frequency'].iat[0],
+            # x.iat[0, 4],  # length
+            x['length'].iat[0],
             x['score'].mean()))
         return pd.DataFrame(
             score.to_list(),

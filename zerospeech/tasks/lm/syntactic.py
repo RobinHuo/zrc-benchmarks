@@ -32,11 +32,17 @@ class SyntacticTask(Task):
         data.drop(columns=['score sentence', 'score non sentence'], inplace=True)
 
         # finally get the mean score across voices for all pairs
-        score = data.groupby(['type', 'subtype', 'id']).apply(lambda x: (
-            x.iat[0, 2],  # type
-            x.iat[0, 3],  # subtype
-            x.iat[0, 4],  # sentence
-            x.iat[0, 5],  # non sentence
+        score = data.groupby(['type', 'subtype', 'id'])[
+            ['type', 'subtype', 'sentence', 'non sentence', 'score']
+        ].apply(lambda x: (
+            # x.iat[0, 2],  # type
+            x['type'].iat[0],
+            # x.iat[0, 3],  # subtype
+            x['subtype'].iat[0],
+            # x.iat[0, 4],  # sentence
+            x['sentence'].iat[0],
+            # x.iat[0, 5],  # non sentence
+            x['non sentence'].iat[0],
             x['score'].mean()))
         return pd.DataFrame(
             score.to_list(),
